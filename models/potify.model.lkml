@@ -40,7 +40,7 @@ explore: brand_product {
 
 explore: patient {
 
-  sql_always_where: ${patient.checked_documents_by_user} != NULL ;;
+  sql_always_where: ${patient.checked_documents_by_user} IS NOT NULL ;;
 
   join: main_document_checker {
     from: fos_user
