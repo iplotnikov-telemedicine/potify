@@ -33,6 +33,11 @@ view: patient {
     sql: ${TABLE}.alt_email ;;
   }
 
+  dimension: announcements {
+    type: string
+    sql: ${TABLE}.announcements ;;
+  }
+
   dimension: authorize_net_customer_id {
     type: number
     sql: ${TABLE}.authorize_net_customer_id ;;
@@ -66,6 +71,16 @@ view: patient {
   dimension: cell_phone {
     type: string
     sql: ${TABLE}.cell_phone ;;
+  }
+
+  dimension: checked_documents_by_user {
+    type: number
+    sql: ${TABLE}.checked_documents_by_user ;;
+  }
+
+  dimension: full_name {
+    type: string
+    sql: CONCAT_WS(' ', ${first_name}, IF(${middle_name} != '', ${middle_name}, ''), ${last_name}) ;;
   }
 
   dimension_group: created {
@@ -143,7 +158,6 @@ view: patient {
 
   dimension: fos_user_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}.fos_user_id ;;
   }
 
@@ -174,7 +188,6 @@ view: patient {
 
   dimension: invitation_reward_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}.invitation_reward_id ;;
   }
 
@@ -380,7 +393,6 @@ view: patient {
 
   dimension: referral_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}.referral_id ;;
   }
 
@@ -502,33 +514,7 @@ view: patient {
       middle_name,
       current_recommendation_doctor_name,
       nickname,
-      fos_user.id,
-      fos_user.username,
-      referral.id,
-      referral.name,
-      invitation_reward.id,
-      action_confirmation.count,
-      address.count,
-      appointment.count,
-      bookmark.count,
-      delete_log.count,
-      document.count,
-      favorite.count,
-      onetime_auth_token.count,
-      order.count,
-      patient_deal_ref.count,
-      patient_email_newsletter_ref.count,
-      patient_patient_group_ref.count,
-      patient_phone_history.count,
-      patient_signup.count,
-      payment_method.count,
-      promo_balance_log.count,
-      recommendation.count,
-      review.count,
-      review_report.count,
-      review_vote.count,
-      shop_cart.count,
-      shop_order.count
+      recommendation.count
     ]
   }
 }
