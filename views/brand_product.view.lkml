@@ -208,9 +208,14 @@ view: brand_product {
     sql: ${TABLE}.weedmaps_id ;;
   }
 
-  measure: number_of_brand_products {
+  measure: count_of_brand_products {
     type: count
     drill_fields: [detail*]
+  }
+
+  measure: number_of_brand_products {
+    type: count
+    # sql: ${id} ;;
   }
 
   # ----- Sets of fields for drilling ------
