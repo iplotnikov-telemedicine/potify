@@ -10,13 +10,16 @@ view: recommendation {
 
   dimension: caregiver_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}.caregiver_id ;;
+  }
+
+  dimension: checked_by_user {
+    type: number
+    sql: ${TABLE}.checked_by_user ;;
   }
 
   dimension: company_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}.company_id ;;
   }
 
@@ -60,7 +63,6 @@ view: recommendation {
 
   dimension: doctor_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}.doctor_id ;;
   }
 
@@ -81,7 +83,6 @@ view: recommendation {
 
   dimension: file_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}.file_id ;;
   }
 
@@ -127,7 +128,6 @@ view: recommendation {
 
   dimension: office_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}.office_id ;;
   }
 
@@ -242,24 +242,7 @@ view: recommendation {
       patient.middle_name,
       patient.current_recommendation_doctor_name,
       patient.nickname,
-      patient.merged_to_patient_id,
-      doctor.id,
-      doctor.first_name,
-      doctor.last_name,
-      doctor.middle_name,
-      company.id,
-      company.name,
-      office.id,
-      office.business_name,
-      office.name,
-      caregiver.id,
-      caregiver.first_name,
-      caregiver.last_name,
-      file.id,
-      file.original_name,
-      appointment.count,
-      order.count,
-      order_item.count
+      patient.merged_to_patient_id
     ]
   }
 }

@@ -37,3 +37,25 @@ explore: brand_product {
     sql_on: ${brand_product.updated_by} = ${creator.id} ;;
   }
 }
+
+explore: patient {
+
+  sql_always_where: ${patient.checked_documents_by_user} != NULL ;;
+
+  join: main_document_checker {
+    from: fos_user
+    relationship: many_to_one
+    sql_on: ${patient.checked_documents_by_user} = ${main_document_checker.id} ;;
+  }
+
+  join: recommendation {
+    relationship: many_to_one
+    sql_on: ${recommendation.patient_id} = ${patient.id} ;;
+  }
+
+  join: recommendation_checker {
+    from: fos_user
+    relationship: many_to_one
+    sql_on: ${recommendation.checked_by_user} = ${recommendation_checker.id} ;;
+  }
+}
