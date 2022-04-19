@@ -184,6 +184,24 @@ view: brand_product {
     sql: ${TABLE}.upc ;;
   }
 
+  dimension: product_status {
+    type: string
+    case: {
+      when: {
+        sql: ${status} = 0 ;;
+        label: "Unpublished"
+      }
+      when: {
+        sql: ${status} = 1 ;;
+        label: "Published"
+      }
+      when: {
+        sql: ${status} = 2 ;;
+        label: "Archived"
+      }
+    }
+  }
+
   dimension_group: updated {
     type: time
     timeframes: [
