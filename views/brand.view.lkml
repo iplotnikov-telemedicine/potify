@@ -137,6 +137,11 @@ view: brand {
     sql: ${TABLE}.weedmaps_id ;;
   }
 
+  dimension: website_weedmaps_id {
+    type: string
+    sql: CONCAT(${website}, ' ', ${weedmaps_id}) ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
