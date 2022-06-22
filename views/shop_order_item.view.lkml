@@ -66,6 +66,17 @@ view: shop_order_item {
     drill_fields: [detail*]
   }
 
+  dimension: name {
+    type: string
+    sql: CASE replace(${TABLE}.name, " Category", "")
+      WHEN "Root" THEN NULL ELSE ${TABLE}.name END;;
+  }
+
+  measure: total_quantity {
+    type:  sum
+    sql:  ${TABLE}.quantity ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

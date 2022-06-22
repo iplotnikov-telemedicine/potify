@@ -18,6 +18,51 @@ explore: shop_order {
   }
 }
 
+explore: shop_order_item {
+
+  join: shop_order {
+    relationship: many_to_one
+    sql_on: ${shop_order_item.shop_order_id} = ${shop_order.id} ;;
+  }
+
+  join: product {
+    relationship: many_to_one
+    sql_on: ${shop_order_item.product_id} = ${product.id} ;;
+  }
+
+  join: product_categories {
+    from: product_categories
+    relationship: many_to_one
+    sql_on: ${product.category_id} = ${product_categories.id} ;;
+  }
+
+  join: product_categories_1 {
+    from: product_categories
+    relationship: many_to_one
+    sql_on: ${product_categories.parent_id} = ${product_categories_1.id} ;;
+  }
+
+  join: product_categories_2 {
+    from: product_categories
+    relationship: many_to_one
+    sql_on: ${product_categories_1.parent_id} = ${product_categories_2.id} ;;
+  }
+
+  join: product_categories_3 {
+    from: product_categories
+    relationship: many_to_one
+    sql_on: ${product_categories_2.parent_id} = ${product_categories_3.id} ;;
+  }
+
+  join: product_categories_4 {
+    from: product_categories
+    relationship: many_to_one
+    sql_on: ${product_categories_3.parent_id} = ${product_categories_4.id} ;;
+  }
+
+}
+
+
 explore: brand_product {
 
   join: brand {
