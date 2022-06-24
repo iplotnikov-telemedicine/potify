@@ -22,16 +22,37 @@ explore: shop_order {
 explore: shop_order_item {
 
   join: shop_order {
+    type: inner
     relationship: many_to_one
     sql_on: ${shop_order_item.shop_order_id} = ${shop_order.id} ;;
   }
 
+  join: mb_office {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${shop_order.medibook_office_id} = ${mb_office.id} ;;
+  }
+
   join: product {
+    type: inner
     relationship: many_to_one
     sql_on: ${shop_order_item.product_id} = ${product.id} ;;
   }
 
+  join: brand_product {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${product.brand_product_id} = ${brand_product.id} ;;
+  }
+
+  join: brand {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${brand_product.brand_id} = ${brand.id} ;;
+  }
+
   join: product_categories {
+    type: inner
     from: product_categories
     relationship: many_to_one
     sql_on: ${product.category_id} = ${product_categories.id} ;;
