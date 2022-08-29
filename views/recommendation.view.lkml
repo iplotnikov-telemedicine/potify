@@ -13,8 +13,17 @@ view: recommendation {
     sql: ${TABLE}.caregiver_id ;;
   }
 
-  dimension: checked {
-    type: date_time
+  dimension_group: checked {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.checked_at ;;
   }
 
