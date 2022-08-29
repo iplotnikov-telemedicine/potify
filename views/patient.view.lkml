@@ -151,6 +151,20 @@ view: patient {
     sql: ${TABLE}.disable_push ;;
   }
 
+  dimension_group: document_checked {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.document_checked_at ;;
+  }
+
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
@@ -299,6 +313,11 @@ view: patient {
   dimension: medibook_company_id {
     type: number
     sql: ${TABLE}.medibook_company_id ;;
+  }
+
+  dimension: doc_checked_at {
+    type: date_time
+    sql: ${TABLE}.doc_checked_at ;;
   }
 
   dimension: medibook_id {

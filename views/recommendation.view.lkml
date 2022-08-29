@@ -13,6 +13,11 @@ view: recommendation {
     sql: ${TABLE}.caregiver_id ;;
   }
 
+  dimension: checked {
+    type: date_time
+    sql: ${TABLE}.checked_at ;;
+  }
+
   dimension: checked_by_user {
     type: number
     sql: ${TABLE}.checked_by_user ;;
