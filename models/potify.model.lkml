@@ -106,8 +106,11 @@ explore: brand_product {
 }
 
 explore: patient {
-
-  sql_always_where: ${patient.checked_documents_by_user} IS NOT NULL ;;
+# Attention! Explore is always filtred by "checked_documents_by_user" in "patient" view
+  sql_always_where:
+    ${patient.checked_documents_by_user} IS NOT NULL
+    and ((${patient.document_checked_time} between {% date_start patient_doc_checked_time_filter %} and {% date_end patient_doc_checked_time_filter %})
+    or (${recommendation.checked_time} between {% date_start patient_doc_checked_time_filter %} and {% date_end patient_doc_checked_time_filter %}));;
 
   join: main_document_checker {
     from: fos_user

@@ -2,6 +2,10 @@ view: patient {
   sql_table_name: potify_prod.patient ;;
   drill_fields: [merged_to_patient_id]
 
+  filter: patient_doc_checked_time_filter {
+    type: date_time
+  }
+
   dimension: merged_to_patient_id {
     primary_key: yes
     type: number
