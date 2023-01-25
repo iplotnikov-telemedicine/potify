@@ -4,6 +4,7 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 # include: "/**/*.view.lkml"                 # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 
+# test
 
 explore: shop_order {
 
@@ -17,7 +18,6 @@ explore: shop_order {
     sql_on: ${mb_office.medibook_company_id} = ${mb_company.id} ;;
   }
 }
-
 
 explore: shop_order_item {
 
