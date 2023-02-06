@@ -108,7 +108,7 @@ explore: brand_product {
 explore: patient {
   sql_always_where:
     ${patient.checked_documents_by_user} IS NOT NULL
-    {% if recommendation_checker.patient_doc_checked_time_filter._in_query %}
+    {% if patient.patient_doc_checked_time_filter._in_query %}
       AND (
         (${patient.document_checked_time} between {% date_start patient_doc_checked_time_filter %}
           and {% date_end patient_doc_checked_time_filter %})
