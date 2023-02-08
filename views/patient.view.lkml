@@ -4,6 +4,7 @@ view: patient {
 
   filter: patient_doc_checked_time_filter {
     type: date_time
+    convert_tz: no
   }
 
   dimension: merged_to_patient_id {
