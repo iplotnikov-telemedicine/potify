@@ -3,6 +3,7 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
+  query_timezone: user_timezone
   preferred_slug: RLsKmJ4vQ61gJ0c3XjnCHm
   elements:
   - title: Cart Abandonment Report
