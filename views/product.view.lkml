@@ -109,6 +109,11 @@ view: product {
     drill_fields: [detail*]
   }
 
+  measure: product_list {
+    type: list
+    list_field: name
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
