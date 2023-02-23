@@ -13,7 +13,7 @@
     type: looker_grid
     fields: [fos_user.email, product.product_list, shop_cart.changed_by_user_time]
     filters:
-      mb_company.id: '5319'
+      mb_company.original_id: '5319'
     sorts: [shop_cart.changed_by_user_time desc]
     limit: 500
     query_timezone: America/Los_Angeles

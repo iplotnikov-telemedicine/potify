@@ -22,7 +22,7 @@ explore: shop_order {
 explore: shop_cart_item {
 
   access_filter: {
-    field: mb_company.id
+    field: mb_company.original_id
     user_attribute: allowed_customers
   }
 
