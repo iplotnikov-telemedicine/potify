@@ -107,21 +107,15 @@ explore: brand_product {
 
 explore: patient {
   sql_always_where:
-    ${patient.checked_documents_by_user} IS NOT NULL
+    ${main_document.checked_by_user} IS NOT NULL
     {% if patient.patient_doc_checked_time_filter._in_query %}
       AND (
-        (${patient.document_checked_time} between {% date_start patient_doc_checked_time_filter %}
+        (${main_document.checked_time} between {% date_start patient_doc_checked_time_filter %}
           and {% date_end patient_doc_checked_time_filter %})
         OR (${recommendation.checked_time} between {% date_start patient_doc_checked_time_filter %}
           and {% date_end patient_doc_checked_time_filter %})
       )
     {% endif %} ;;
-
-  join: main_document_checker {
-    from: fos_user
-    relationship: many_to_one
-    sql_on: ${patient.checked_documents_by_user} = ${main_document_checker.id} ;;
-  }
 
   join: recommendation {
     relationship: many_to_one
@@ -132,5 +126,16 @@ explore: patient {
     from: fos_user
     relationship: many_to_one
     sql_on: ${recommendation.checked_by_user} = ${recommendation_checker.id} ;;
+  }
+
+  join: main_document {
+    relationship: one_to_many
+    sql_on: ${patient.id} = ${main_document.patient_id} ;;
+  }
+
+  join: main_document_checker {
+    from: fos_user
+    relationship: many_to_one
+    sql_on: ${main_document.checked_by_user} = ${main_document_checker.id} ;;
   }
 }
