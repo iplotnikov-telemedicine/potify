@@ -300,6 +300,11 @@ view: patient {
     sql: ${TABLE}.main_document_file_id ;;
   }
 
+  dimension: current_main_document_id {
+    type: number
+    sql: ${TABLE}.current_main_document_id ;;
+  }
+
   dimension: main_document_number {
     type: string
     sql: ${TABLE}.main_document_number ;;
