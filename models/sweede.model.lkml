@@ -188,7 +188,7 @@ explore: patient {
 
   join: main_document {
     relationship: one_to_many
-    sql_on: ${patient.current_main_document_id} = ${main_document.id} ;;
+    sql_on: ${patient.id} = ${main_document.patient_id} ;;
   }
 
   join: main_document_checker {
